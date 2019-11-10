@@ -15,7 +15,7 @@ public class UserController {
     @RequestMapping("demo")
     public String demo(Model model) {
         model.addAttribute("message", "Hello Thymeleaf");
-        double grade = 40.5;
+        double grade = 80.5;
         model.addAttribute("grade", grade);
         model.addAttribute("GPA", convertGPA(grade));
         // return to templates/demo.html page.
