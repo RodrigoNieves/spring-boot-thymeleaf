@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import rrsn.me.springbootthymeleaf.model.User;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,18 @@ public class UserController {
         return "demo2";
     }
 
+    @RequestMapping("demo3")
+    public String demo3(HttpServletRequest request, Model model) {
+        // Add "request data" string to the request scope and associated it with the key "request" (we'll use the key value to retrieve the data)
+        request.setAttribute("request", "request data");
+
+        // Add "session data" String to the session scope and associate it with the key "session" (we'll use the key value to retrieve the data)
+        request.getSession().setAttribute("session", "session data");
+
+        // Add "application data" String to the application scope and associate it with the key "application" (we'll use the key value to retrieve the data)
+        request.getSession().getServletContext().setAttribute("application", "application data");
+        return "demo2";
+    }
     private String convertGPA(double grade) {
         if (grade >= 90) {
             return "A";
